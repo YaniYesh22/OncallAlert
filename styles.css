@@ -255,3 +255,34 @@ body {
         transform: translateY(0);
     }
 }
+
+.approach-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s;
+}
+
+.approach-link:hover {
+    background-color: rgba(79, 70, 229, 0.1);
+}
+
+.link-icon {
+    font-size: 1rem;
+    transition: transform 0.2s;
+}
+
+.approach-link:hover .link-icon {
+    transform: translateX(2px);
+}
+
+.resolution-section {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+}
