@@ -1,0 +1,52 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Device Alert Dashboard</title>
+   <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>
+<button onclick="return api.generateTestAlert()">Generate Test Alert</button>
+   <div class="dashboard">
+       <header class="header">
+           <h1 class="title">Device Alerts</h1>
+           <select class="filter-select" id="deviceFilter">
+               <option value="all">All Devices</option>
+           </select>
+       </header>
+
+       <div class="stats-grid">
+           <div class="stat-card">
+               <h3>Total Alerts</h3>
+               <div id="totalAlerts" class="stat-value">0</div>
+           </div>
+           <div class="stat-card">
+               <h3>Error Alerts</h3>
+               <div id="errorAlerts" class="stat-value">0</div>
+           </div>
+           <div class="stat-card">
+               <h3>Warning Alerts</h3>
+               <div id="warningAlerts" class="stat-value">0</div>
+           </div>
+       </div>
+
+       <div class="chart-container">
+           <h2>Device Alert Distribution</h2>
+           <canvas id="deviceChart"></canvas>
+       </div>
+
+       <div class="tab-buttons">
+           <button class="tab-btn active" data-tab="active">Active Alerts</button>
+           <button class="tab-btn" data-tab="resolved">Resolved</button>
+       </div>
+
+       <div id="activeAlertsContainer" class="alerts-container"></div>
+       <div id="resolvedAlertsContainer" class="alerts-container" style="display: none;"></div>
+   </div>
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script src="script.js"></script>
+</body>
+</html>
