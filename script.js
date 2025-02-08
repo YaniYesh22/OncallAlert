@@ -185,8 +185,15 @@ function updateDeviceChart(alerts) {
     }
 }
 function createAlertCard(alert) {
+    const guides = {
+        error: "https://en.wikipedia.org/wiki/Incident_management",
+        warning: "https://en.wikipedia.org/wiki/IT_service_management",
+        info: "https://en.wikipedia.org/wiki/Event_management_(ITIL)"
+    };
+
     return `
        <div class="alert-card ${alert.severity} fade-in">
+       
            <div class="alert-header">
                <div>
                    <div class="alert-title">Alert Subject</div>
@@ -207,6 +214,7 @@ function createAlertCard(alert) {
                <div class="alert-item">
                    <div class="alert-title">Severity Level</div>
                    <div class="alert-value alert-severity ${alert.severity}">
+                   
                        ${alert.severity.toUpperCase()}
                    </div>
                </div>
@@ -225,13 +233,20 @@ function createAlertCard(alert) {
                    <div class="alert-value">${formatTimestamp(alert.resolved_at)}</div>
                </div>
            ` : `
-               <div class="resolution-section">
+           <div class="resolution-section">
+               <div class="alert-header">
                    <div class="alert-title">Resolution Comment</div>
-                   <textarea class="comment-input" placeholder="Add resolution comment..." data-alert-id="${alert.id}"></textarea>
-                   <button class="resolve-btn" onclick="handleResolveAlert(${alert.id})">
-                       <span>Resolve Alert</span>
-                   </button>
+                   <a href="${guides[alert.severity]}" class="approach-link" target="_blank">
+                       View Resolution Guide
+                       <span class="link-icon">↗</span>
+                   </a>
                </div>
+               <textarea class="comment-input" placeholder="Add resolution comment..." data-alert-id="${alert.id}"></textarea>
+               <button class="resolve-btn" onclick="handleResolveAlert(${alert.id})">
+                   <span>Resolve Alert</span>
+               </button>
+           </div>
+       </div>
            `}
        </div>
    `;
